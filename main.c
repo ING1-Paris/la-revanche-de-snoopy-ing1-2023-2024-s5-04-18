@@ -14,7 +14,7 @@ int xmax = 20;
 int ymax = 10;
 
 // Position de depart du personnage
-int x_personnage = 10;
+int x_personnage = 5;
 int y_personnage = 5;
 
 // position de depart de la boule
@@ -157,23 +157,8 @@ int main() {
     do {
         effacerEcran();
         // Afficher le terrain et le personnage immobile
-        printf("||*|*|*|*|*|*|*|*|*|*|*|*|\n");
-        for (int i = 1; i <= 10; ++i) {
-            printf("|*|");
-            for (int j = 1; j <= 20; ++j) {
-                if (i == y_personnage && j == x_personnage) {
-                    printf("%c", personnage);
-                } else {
-                    if (i == y_boule && j == x_boule) {
-                        printf("%c", boule);
-                    } else {
-                        printf(" ");
-                    }
-                }
-            }
-            printf("|*|\n");
-        }
-        printf("||*|*|*|*|*|*|*|*|*|*|*|*|\n");
+        afficher_terrain();
+
 // le personnage reste immobile jusqu a qu une touche soit pressé
         // Attendre l'entrée de l'utilisateur (sans nécessiter la touche Entrée)
         char touche = _getch();
