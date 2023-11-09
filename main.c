@@ -3,7 +3,7 @@
 #include <WINDOWS.H>
 
 
-// Fonction pour effacer l'écran de la console
+// Fonction pour effacer l'écran de la console c quoi ca ??
 void effacerEcran() {
     system("cls");
 }
@@ -13,11 +13,11 @@ int ymin = 1;
 int xmax = 20;
 int ymax = 10;
 
-// Position du personnage
+// Position de depart du personnage
 int x_personnage = 5;
 int y_personnage = 5;
 
-// Fonction pour déplacer le personnage vers le haut
+// Fonction pour deplacer le personnage vers le haut
 void deplacer_haut() {
     if (y_personnage > ymin) {
         y_personnage--;
@@ -53,13 +53,13 @@ int main() {
     }
     printf("|*|*|*|*|*|*|*|*|*|*|*|*|");
 
-    // Exemple d'utilisation
+    // Exemple d'utilisation, ?? a laisser ca ??
     deplacer_haut();
     deplacer_gauche();
     deplacer_bas();
     deplacer_droite();
 
-    // Vérifier les nouvelles coordonnées du personnage
+    // Vérifier les nouvelles coordonnées du personnage ??a laisser ca ?
     printf("Nouvelles coordonnées : (%d, %d)\n", x_personnage, y_personnage);
     printf("Appuyez sur une touche pour quitter...\n");
 
