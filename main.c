@@ -3,10 +3,7 @@
 #include <WINDOWS.H>
 
 
-// Fonction pour effacer l'écran de la console c quoi ca ??
-void effacerEcran() {
-    system("cls");
-}
+
 
 int xmin = 1; // Modification des limites pour prendre en compte les bords
 int ymin = 1;
@@ -14,8 +11,12 @@ int xmax = 20;
 int ymax = 10;
 
 // Position de depart du personnage
-int x_personnage = 5;
+int x_personnage = 10;
 int y_personnage = 5;
+
+// position de depart de la boule
+int x_boule = 1;
+int y_boule = 10;
 
 // Fonction pour deplacer le personnage vers le haut
 void deplacer_haut() {
@@ -46,29 +47,12 @@ void deplacer_droite() {
 }
 
 int main() {
-    // Définir les limites de l'espace de jeu
-    printf("|*|*|*|*|*|*|*|*|*|*|*|*|\n");
-    for (int i = 1; i <= 10; ++i) {
-        printf("|*|                  |*|\n");
-    }
-    printf("|*|*|*|*|*|*|*|*|*|*|*|*|");
-
-    // Exemple d'utilisation, ?? a laisser ca ??
-    deplacer_haut();
-    deplacer_gauche();
-    deplacer_bas();
-    deplacer_droite();
-
-    // Vérifier les nouvelles coordonnées du personnage ??a laisser ca ?
-    printf("Nouvelles coordonnées : (%d, %d)\n", x_personnage, y_personnage);
-    printf("Appuyez sur une touche pour quitter...\n");
-
     char personnage = 'S';
+    char boule = 'C';
 
     while (1) {
-        effacerEcran();
 
-        // Afficher le terrain et le personnage
+        // Afficher le terrain et le personnage immobile
         printf("||*|*|*|*|*|*|*|*|*|*|*|*|\n");
         for (int i = 1; i <= 10; ++i) {
             printf("|*|");
@@ -76,13 +60,17 @@ int main() {
                 if (i == y_personnage && j == x_personnage) {
                     printf("%c", personnage);
                 } else {
-                    printf(" ");
+                    if (i == y_boule && j == x_personnage) {
+                        printf("%c", boule);
+                    } else {
+                        printf(" ");
+                    }
                 }
             }
             printf("|*|\n");
         }
-        printf("||*|*|*|*|*|*|*|*|*|*|*|*|");
-
+        printf("||*|*|*|*|*|*|*|*|*|*|*|*|\n");
+// le personnage reste immobile jusqu a qu une touche soit pressé
         // Attendre l'entrée de l'utilisateur (sans nécessiter la touche Entrée)
         char touche = _getch();
 
@@ -104,6 +92,4 @@ int main() {
                 break;
         }
     }
-
-    return 0;
 }
