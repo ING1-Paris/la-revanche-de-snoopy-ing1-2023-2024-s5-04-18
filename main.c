@@ -96,3 +96,35 @@ int main() {
     } while (x_personnage != x_boule && y_personnage!=x_boule);
     printf("GAME OVER");
 }
+
+void afficherJauge(int tempsRestant) {
+    int i;
+    printf("[");
+    for (i = 0; i < tempsRestant; ++i) {
+        printf("*");
+    }
+    for (i = tempsRestant; i < 120; ++i) {
+        printf(" ");
+    }
+    printf("]\n");
+}
+
+int main() {    
+    int tempsTotal = 120;
+    int tempsRestant = tempsTotal;
+
+
+    while (tempsRestant > 0)
+    {
+        printf("\rSecondes restantes : %d\n", tempsRestant);
+        afficherJauge(tempsRestant);
+        tempsRestant--;
+        Sleep(1000); //patienter 1 000 ms (donc une seconde) dans chaque exécution de la boucle
+        system("cls");
+    }
+
+    printf("Temps ecoule !\n");
+
+
+    return 0;
+}
