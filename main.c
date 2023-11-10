@@ -13,7 +13,7 @@ int ymin = 1;
 int xmax = 20;
 int ymax = 10;
 
-// Position de depart du personnage
+// Position de depart de snoopy au milieu du terrain
 int x_personnage = 5;
 int y_personnage = 5;
 
@@ -27,6 +27,7 @@ int blocs_deplaces[NOMBRE_BLOCS] = {0};// Tableau pour suivre les blocs déplac�
 // Fonction pour deplacer le personnage vers le haut
 void deplacer_haut() {
     if (y_personnage > ymin) {
+    
         // Empêcher le personnage de traverser les blocs
         for (int i = 0; i < NOMBRE_BLOCS; i++) {
             if (x_personnage == blocs[i][0] && y_personnage - 1 == blocs[i][1]) {
