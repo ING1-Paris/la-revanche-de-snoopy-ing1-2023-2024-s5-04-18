@@ -1,14 +1,15 @@
 #include <stdio.h>
 #include <windows.h>
 #include <unistd.h>
-#define NOMBRE_BLOCS 16
+//nombre de bloc
+#define NOMBRE_BLOCS 16   
 #include <time.h>
 #include <conio.h>
 void effacerEcran() {
-    system("cls");
+    system("cls");//supprime tout dans la console
 }
 
-int code_secret;// code secret caché dans le nom
+int code_secret;// code secret cache dans le nom
 
 int xmin = 1; // minnimum du nombre de colonnes de la map
 int ymin = 1;// minnimum de nombre de lignes de la map
@@ -49,7 +50,7 @@ int y_oiseau3 = 10;
 int x_oiseau4 = 20;
 int y_oiseau4 = 10;
 
-//nombre d'oiseau attrapé
+//nombre d'oiseau attrape
 int oiseau_caught=0;
 int choix_menu;
 
@@ -78,7 +79,7 @@ void deplacer_bas() {
         y_personnage++;
     }
 }
-// Fonction pour déplacer le personnage vers la gauche
+// Fonction pour deplacer le personnage vers la gauche
 void deplacer_gauche() {
     if (x_personnage > xmin) {
         for (int i = 0; i < NOMBRE_BLOCS; i++) {
@@ -90,7 +91,7 @@ void deplacer_gauche() {
     }
 }
 
-// Fonction pour déplacer le personnage vers la droite
+// Fonction pour deplacer le personnage vers la droite
 void deplacer_droite() {
     if (x_personnage < xmax) {
         for (int i = 0; i < NOMBRE_BLOCS; i++) {
@@ -131,7 +132,7 @@ void afficher_terrain() {
                     }
                 }
                 if (bloc_present == 0) {
-                    printf(" ");//mettre des espaces la ou il n'y à pas de blocs
+                    printf(" ");//mettre des espaces la ou il n'y a pas de blocs
                 }
             }
 
@@ -159,7 +160,7 @@ void pousser_bloc() {//programme pour pousser les blocs
             int new_x = blocs[i][0] + dx;
             int new_y = blocs[i][1] + dy;
             
-            // déterminer si le bloc peut etre poussr
+            // determiner si le bloc peut etre poussr
             if (new_x >= xmin && new_x <= xmax && new_y >= ymin && new_y <= ymax) {
                 int can_push = 1;
 
@@ -173,7 +174,7 @@ void pousser_bloc() {//programme pour pousser les blocs
                 if (can_push) {
                     blocs[i][0] = new_x;
                     blocs[i][1] = new_y;
-                    blocs_deplaces[i] = 1; // Marquer le bloc comme déplacé
+                    blocs_deplaces[i] = 1; // Marquer le bloc comme deplace
                 }
             }
         }
@@ -231,7 +232,7 @@ int main() {
 
 
         tempsRestant = tempsTotal;
-        debut = clock(); // Commencez le compte à rebours au début du programme
+        debut = clock(); // Commencez le compte à rebours au debut du programme
 
         do {
             // verifiez le temps toutes les secondes ca doit etre ou ca
@@ -242,7 +243,7 @@ int main() {
             afficher_terrain();
             if (x_personnage == x_oiseau1 && y_personnage == y_oiseau1) { // si snooppy attrape un oiseau
                 y_oiseau1--; // alors l'oiseau disparait
-                oiseau_caught++;// nombre d'oiseau attrapé augmenté
+                oiseau_caught++;// nombre d'oiseau attrapé augmente
                 printf("Bravo ! vous avez attrape %d oiseau(x)\n", oiseau_caught);
                 sleep(2);// pause de deux secondes pour feciliter l'utilisateur
             }
@@ -271,7 +272,7 @@ int main() {
                     miseAJourTemps();
                 }
 
-                // mettre à jour la position de la boule pour qu elle avance en diagonale
+                // mettre a jour la position de la boule pour qu elle avance en diagonale
                 x_boule += dx_boule;
                 y_boule += dy_boule;
 
@@ -284,8 +285,8 @@ int main() {
                 }
 
                 // deplacer le personnage en fonction de la touche appuyée
-                if (_kbhit()) {
-                    char touche = _getch();
+                if (_kbhit()) {//indications de si une touche à été frappe
+                    char touche = _getch();//attendre la frappe d'un caractere au clavier puis le lire 
                     switch (touche) {
                         case 'z':
                             deplacer_haut();
@@ -299,7 +300,7 @@ int main() {
                         case 'd':
                             deplacer_droite();
                             break;
-                        case 'p'://déplacer le bloc 
+                        case 'p'://deplacer le bloc 
                             memset(blocs_deplaces, 0, sizeof(blocs_deplaces));
                             pousser_bloc();
                             break;
