@@ -202,12 +202,12 @@ void pousser_bloc() {
 
 int tempsTotal = 120;
 int tempsRestant ;
-clock_t debut = 0; // initialisez debut
+clock_t debut = 0; // initialisez debut du compte a rebours
 
 
 void miseAJourTemps() {
 
-    tempsRestant = tempsTotal - (clock() - debut) / CLOCKS_PER_SEC;
+    tempsRestant = tempsTotal - (clock() - debut) / CLOCKS_PER_SEC; // on soustrait le au temps total, le temps écoulé
 }
 
 int main() {
@@ -246,8 +246,8 @@ int main() {
         } while (code_secret!=1234);
 
 
-        tempsRestant = tempsTotal;
-        debut = clock(); // Commencez le compte à rebours au début du programme
+        tempsRestant = tempsTotal; // Au debut, le temps restant est égal au temps total
+        debut = clock(); // Commencez le compte à rebours au debut du programme
 
         do {
             // verifiez le temps toutes les secondes ca doit etre ou ca
