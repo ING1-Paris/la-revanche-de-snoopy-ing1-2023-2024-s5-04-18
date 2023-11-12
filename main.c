@@ -4,9 +4,10 @@
 #include <stdio.h>
 #include <windows.h>
 #include <unistd.h>
-#define NOMBRE_BLOCS 2
+#define NOMBRE_BLOCS 16
 #include <time.h>
 #include <conio.h>
+#include <string.h>
 void effacerEcran() {
     system("cls");
 }
@@ -21,7 +22,7 @@ int x_personnage = 10;
 int y_personnage = 5;
 
 
-int blocs[NOMBRE_BLOCS][2] = {{8, 5}, {12, 5}};
+int blocs[NOMBRE_BLOCS][16] = {{8, 3}, {9, 3}, {10, 3}, {11, 3}, {12, 3}, {12, 4}, {12, 5}, {12, 6}, {12, 7}, {11, 7}, {10, 7},{9, 7}, {8, 7},{8, 6}, {8, 5}, {8, 4} };
 int blocs_deplaces[NOMBRE_BLOCS] = {0};
 // Position de départ de la boule
 int x_boule = 1;
@@ -31,19 +32,20 @@ int dx_boule = 1; // Déplacement de la boule en x
 int dy_boule = 1; // Déplacement de la boule en y
 
 
-int x_oiseau1 =1;
-int y_oiseau1 =1;
+int x_oiseau1 = 1;
+int y_oiseau1 = 1;
 
-int x_oiseau2 =20;
-int y_oiseau2=1;
+int x_oiseau2 = 20;
+int y_oiseau2 = 1;
 
-int x_oiseau3 =1;
-int y_oiseau3=10;
+int x_oiseau3 = 1;
+int y_oiseau3 = 10;
 
-int x_oiseau4 =20;
-int y_oiseau4 =10;
+int x_oiseau4 = 20;
+int y_oiseau4 = 10;
 
-int nb_oiseau_caught=0;
+int oiseau_caught=0;
+
 
 
 // Fonction pour déplacer le personnage vers le haut
@@ -106,6 +108,10 @@ void afficher_terrain() {
                 printf("1");
             }else if(i == y_oiseau2 && j == x_oiseau2){
                 printf("2");}
+                else if ( i == y_oiseau3 && j == x_oiseau3) {
+                printf("3");
+            }else if (i == y_oiseau4 && j == x_oiseau4 ) {
+                printf("4");}
             else{
                 int bloc_present = 0;
                 for (int k = 0; k < NOMBRE_BLOCS; k++) {
@@ -129,29 +135,15 @@ void pousser_bloc() {
     for (int i = 0; i < NOMBRE_BLOCS; i++) {
         if (blocs_deplaces[i] == 0) {
             int dx = 0, dy = 0;
-            switch (1) {
-                case 1:
-                    if (x_personnage + 1 == blocs[i][0] && y_personnage == blocs[i][1]) {
-                        dx = 1;
-                        break;
-                    }
-                case 2:
-                    if (x_personnage - 1 == blocs[i][0] && y_personnage == blocs[i][1]) {
-                        dx = -1;
-                        break;
-                    }
-                case 3:
-                    if (x_personnage == blocs[i][0] && y_personnage + 1 == blocs[i][1]) {
-                        dy = 1;
-                        break;
-                    }
-                case 4:
-                    if (x_personnage == blocs[i][0] && y_personnage - 1 == blocs[i][1]) {
-                        dy = -1;
-                        break;
-                    }
-                default:
-                    break;
+
+            if (x_personnage + 1 == blocs[i][0] && y_personnage == blocs[i][1]) {
+                dx = 1;
+            } else if (x_personnage - 1 == blocs[i][0] && y_personnage == blocs[i][1]) {
+                dx = -1;
+            } else if (x_personnage == blocs[i][0] && y_personnage + 1 == blocs[i][1]) {
+                dy = 1;
+            } else if (x_personnage == blocs[i][0] && y_personnage - 1 == blocs[i][1]) {
+                dy = -1;
             }
 
             int new_x = blocs[i][0] + dx;
@@ -171,12 +163,14 @@ void pousser_bloc() {
                     blocs[i][0] = new_x;
                     blocs[i][1] = new_y;
                     blocs_deplaces[i] = 1; // Marquer le bloc comme déplacé
-                    return; // Sortir de la fonction après avoir déplacé un bloc
                 }
             }
         }
     }
 }
+
+
+
 int tempsTotal = 120;
 int tempsRestant ;
 clock_t debut = 0; // initialisez debut
@@ -188,18 +182,53 @@ void miseAJourTemps() {
 }
 
 int main() {
+  system("cls");
+    printf("                                                                                            ****    ****      \n");
+    printf("                                                                                             *  *  *  *       \n");
+    printf("                                          *******  ********  ****  ********  ******* *******  *  **  *        \n");
+    printf("                                          *  *     *  *   *  *  *  * *  * *  *     * *     *    ****          \n");
+    printf("                                          *  *     *  * *  * *  *  * *  * *  *  **** *  ****    *  *          \n");
+    printf("                                          *******  *  *  *  **  *  * *  * *  *  *    *  *       *  *          \n");
+    printf("                                             *  *  ****   *******  ********  *  *    *  *       ****          \n");
+    printf("                                             *  *                            ****    ****                     \n");
+    printf("                                          *******                                                              \n");
+    sleep(5);
     tempsRestant = tempsTotal;
     debut = clock(); // Commencez le compte à rebours au début du programme
 
     do {
         // Vérifiez le temps toutes les secondes
-        if ((clock() - debut) / CLOCKS_PER_SEC % 1 == 0) {
-            miseAJourTemps(); // Mettez à jour le temps toutes les secondes
-        }
+
 
         effacerEcran();
         // Afficher le terrain, le personnage et la boule
         afficher_terrain();
+         if(x_personnage==x_oiseau1 && y_personnage==y_oiseau1){
+            y_oiseau1--;
+            oiseau_caught++;
+            printf("vous avez attrape %d oiseau\n",oiseau_caught);
+        }
+        if(x_personnage==x_oiseau2 && y_personnage==y_oiseau2){
+            y_oiseau2--;
+            oiseau_caught++;
+            printf("vous avez attrape %d oiseau\n",oiseau_caught);
+        }
+        if(x_personnage==x_oiseau3 && y_personnage==y_oiseau3){
+            y_oiseau3++;
+            oiseau_caught++;
+            printf("vous avez attrape %d oiseau\n",oiseau_caught);
+        }
+        if(x_personnage==x_oiseau4 && y_personnage==y_oiseau4){
+            y_oiseau4++;
+            oiseau_caught++;
+            printf("vous avez attrape %d oiseau\n",oiseau_caught);
+        }
+        if(oiseau_caught==4){
+            printf("vous avez gagne\n");
+            }else {
+            if ((clock() - debut) / CLOCKS_PER_SEC % 1 == 0) {
+                miseAJourTemps();
+            }
 
         // Mettre à jour la position de la boule en diagonale
         x_boule += dx_boule;
@@ -230,9 +259,11 @@ int main() {
                     deplacer_droite();
                     break;
                 case 'p':
+                    memset(blocs_deplaces, 0, sizeof(blocs_deplaces));
                     pousser_bloc();
                     break;
             }
+        }
         }
         printf("Temps restant : %d secondes\n", tempsRestant);
         // Pause pour ralentir le mouvement
