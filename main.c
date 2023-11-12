@@ -27,8 +27,7 @@ int y_boule = 1;
 int dx_boule = 1; // Déplacement de la boule en x
 int dy_boule = 1; // Déplacement de la boule en y
 
-int largeur_map = 20;
-int hauteur_map = 10;
+
 
 // Fonction pour déplacer le personnage vers le haut
 void deplacer_haut() {
@@ -170,10 +169,10 @@ int main() {
         y_boule += dy_boule;
 
         // Gestion des rebonds de la boule sur les bords de la carte
-        if (x_boule >= largeur_map || x_boule <= 1) {
+        if (x_boule >= xmax || x_boule <= 1) {
             dx_boule = -dx_boule;
         }
-        if (y_boule >= hauteur_map || y_boule <= 1) {
+        if (y_boule >= ymax || y_boule <= 1) {
             dy_boule = -dy_boule;
         }
 
