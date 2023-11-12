@@ -1,29 +1,10 @@
-
-//Bienvenue dans le jeu La Revanche de Snoopy !!! Les 12 meilleurs amis de Snoopy se sont faits kidnapper lors du dernier Salon de l'Agriculture et sont maintenant enfermés dans une cage. Heureusement, Snoopy est là pour les sauver. Il a réussi à s'introduire dans la première cage, mais cette dernière est plongée dans le noir complet et est gardée par une boule. Ta mission, si tu l'acceptes, est de diriger Snoopy à l'aide de ton ordinateur pour qu'il sauve ses amis.
-
-//Les règles sont simples : tu peux indiquer à Snoopy de se déplacer avec les touches suivantes :
-
-//-Z pour aller vers le haut
-//-Q pour aller vers la gauche
-//-S pour aller vers le bas
-//-D pour aller vers la droite
-
-//Ton but est donc de récupérer les oiseaux dispersés dans la map. 
-// Cependant, la tâche n'est pas si facile. Il y a un compte à rebours de 120 secondes qui te force à devoir te dépêcher ! 
- //Si le temps est écoulé, le gardien viendra et sortira Snoopy de la cage.
-
-//Si Snoopy se fait attraper 3 fois, il sera fait prisonnier et la partie sera perdue... 
-//Si Snoopy se prend trois fois la boule, la partie sera perdue...
-
-//Attention, il y a aussi des blocs qui peuvent bloquer le passage jusqu'aux oiseaux, mais grâce à la force phénoménale de Snoopy, tu peux déplacer chaque bloc UNE seule fois grâce à la touche P
-
-
-
-
+#include <stdio.h>
+#include <windows.h>
 #include <unistd.h>
 #define NOMBRE_BLOCS 16
 #include <time.h>
-#include <conio.h> 
+#include <conio.h>
+#include <string.h>// sers a quoi ?
 void effacerEcran() {
     system("cls");
 }
@@ -202,52 +183,54 @@ void pousser_bloc() {
 
 int tempsTotal = 120;
 int tempsRestant ;
-clock_t debut = 0; // initialisez debut du compte a rebours
+clock_t debut = 0; // initialisez debut
 
 
 void miseAJourTemps() {
 
-    tempsRestant = tempsTotal - (clock() - debut) / CLOCKS_PER_SEC; // on soustrait le au temps total, le temps écoulé
+    tempsRestant = tempsTotal - (clock() - debut) / CLOCKS_PER_SEC;
 }
 
 int main() {
     do {
         system("cls");
-        printf("                                                                                                      ****    ****      \n");
-        printf("                                                                                                       *  *  *  *       \n");
-        printf("                                          *******  ********  ****  ********  ********  ******* *******  *  **  *        \n");
-        printf("                                          *  *     *  *   *  *  *  * *  * *  * *  * *  *  3  * *  4  *    ****          \n");
-        printf("                                          *  *     *  * *  * *  *  * * 1* *  * * 2* *  *  **** *  ****    *  *          \n");
-        printf("                                          *******  *  *  *  **  *  * *  * *  * *  * *  *  *    *  *       *  *          \n");
-        printf("                                             *  *  ****   *******  ********  ********  *  *    *  *       ****          \n");
-        printf("                                             *  *                                      ****    ****                     \n");
+        printf("                                                                                               ****    ****      \n");
+        printf("                                                                                                *  *  *  *       \n");
+        printf("                                          *******  ********  ****  ********  ********  *******   *  **  *        \n");
+        printf("                                          *  *     *  *   *  *  *  * *  * *  * *  * *  *  3  *     ****          \n");
+        printf("                                          *  *     *  * *  * *  *  * * 1* *  * * 2* *  *  ****     *  *          \n");
+        printf("                                          *******  *  *  *  **  *  * *  * *  * *  * *  *  *        *  *          \n");
+        printf("                                             *  *  ****   *******  ********  ********  *  *        ****          \n");
+        printf("                                             *  *                                      ****                        \n");
         printf("                                          *******                                                              \n");
 
         printf("                                                    _________________________________\n");
-        printf("                                                   |                                 |\n");
+        printf("                                                   |                                 | \n");
         printf("                                                   | Veuillez choisir une action :   | \n");
         printf("                                                   | 1) Nouvelle partie              | \n");
-        printf("                                                   |                                 | \n");// les regles ne sont pas encore ajouté tout comme  la sauvegarde de partie
+        printf("                                                   | 2) Afficher les regles          | \n");
+        printf("                                                   | 3) Charger une partie           | \n");
+        printf("                                                   | 4) Afficher les regles          | \n");
         printf("                                                   |_________________________________|\n\n\n\n\n");
         printf(" __________________\n");
         printf("| Auteurs :        |\n| ARMAND RATHERY   |\n| LORENZO ENGLENDER|\n| ELIOT PASCHAL    |\n");
         printf("|__________________|\n");
         scanf("%d", &choix_menu);
 
-    } while (choix_menu!=1);
+    } while (choix_menu<1 || choix_menu>5);
 
 
-
-    if(choix_menu == 1) {
+    switch (choix_menu) {
+        case 1:
         do {
 
             printf("rentrez le code secret pour acceder a la partie 1");
             scanf("%d", &code_secret);
-        } while (code_secret!=1234);
+        } while (code_secret!=123);
 
 
-        tempsRestant = tempsTotal; // Au debut, le temps restant est égal au temps total
-        debut = clock(); // Commencez le compte à rebours au debut du programme
+        tempsRestant = tempsTotal;
+        debut = clock(); // Commencez le compte à rebours au début du programme
 
         do {
             // verifiez le temps toutes les secondes ca doit etre ou ca
@@ -329,7 +312,40 @@ int main() {
 // continuer le jeu jusqu'a ce que le personnage rencontre la balle ou que le temps soit ecoule
         printf("GAME OVER");
         sleep(2000);// afficher game over pendant 2 secondes
-        return 0;
-    }
-}
+        break;
 
+
+        case 2:
+            printf(" _________________________________________________\n");
+            printf("| Voici les regles de la revanche de Snoopy       |\n");
+            printf("|_________________________________________________|\n");
+
+printf("Bienvenue dans le jeu La Revanche de Snoopy !!!\n");
+printf("Les 12 meilleurs amis de Snoopy se sont faits kidnapper lors du dernier Salon de l'Agriculture et sont maintenant enfermes dans une cage.\n\n");
+printf("Heureusement, Snoopy est là pour les sauver.\n");
+printf("Apres un long periple Snoopy à enfin reussit a  s'introduire dans la premiere cage, mais cette derniere est plongee dans le noir complet et est gardee par une boule.\n");
+printf("Ta mission, si tu l'acceptes, est de diriger Snoopy à l'aide de ton ordinateur pour qu'il sauve ses amis.\n\n\n");
+
+printf("Les regles sont simples : tu peux indiquer a Snoopy de se deplacer avec les touches suivantes :\n");
+
+printf("-Z pour aller vers le haut\n");
+printf("-Q pour aller vers la gauche\n");
+            printf("-S pour aller vers le bas\n");
+printf("-D pour aller vers la droite\n\n");
+
+            printf("Ton but est donc de recuperer les oiseaux disperses dans la map.\n");
+ printf("Cependant, la tache n'est pas si facile. Il y a un compte à rebours de 120 secondes qui te force à devoir te depecher !\n");
+            printf("Si le temps est ecoule, le gardien viendra et sortira Snoopy de la cage.\n");
+
+            printf("Si Snoopy se fait attraper 3 fois, il sera fait prisonnier et la partie sera perdue...\n");
+printf("Si Snoopy se prend trois fois la boule, la partie sera perdue...\n");
+
+            printf("Attention, il y a aussi des blocs qui peuvent bloquer le passage jusqu'aux oiseaux, mais grâce à la force phenomenale de Snoopy, tu peux deplacer chaque bloc UNE seule fois grace a la touche P\n");
+            printf("Bonne chance et que la force soit avec toi \n\n\n");
+            printf("petit indice le premier code se trouve dans le titre du jeu sur le menu :)");
+            sleep(40);
+break;
+
+    }
+
+}
