@@ -209,14 +209,14 @@ int main() {
         printf("                                                   | 1) Nouvelle partie              | \n");
         printf("                                                   | 2) Afficher les regles          | \n");
         printf("                                                   | 3) Charger une partie           | \n");
-        printf("                                                   | 4) Afficher les regles          | \n");
+        printf("                                                   |                                 | \n");
         printf("                                                   |_________________________________|\n\n\n\n\n");
         printf(" __________________\n");
         printf("| Auteurs :        |\n| ARMAND RATHERY   |\n| LORENZO ENGLENDER|\n| ELIOT PASCHAL    |\n");
         printf("|__________________|\n");
         scanf("%d", &choix_menu);
 
-    } while (choix_menu<1 || choix_menu>5);
+    } while (choix_menu<1 || choix_menu>4);
 
 
     switch (choix_menu) {
