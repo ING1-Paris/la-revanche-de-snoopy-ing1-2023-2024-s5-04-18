@@ -108,6 +108,6 @@ int main() {
     } while (x_personnage != x_boule || y_personnage != y_boule && tempsRestant > 0);
 
     printf("GAME OVER");
-    sleep(2);
+    sleep(5);
     return 0;
 }
