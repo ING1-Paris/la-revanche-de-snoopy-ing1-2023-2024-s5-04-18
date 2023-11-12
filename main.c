@@ -4,7 +4,6 @@
 #define NOMBRE_BLOCS 16
 #include <time.h>
 #include <conio.h>
-#include <string.h>// sers a quoi ?
 void effacerEcran() {
     system("cls");
 }
