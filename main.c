@@ -10,7 +10,7 @@ Attention il y’a aussi des blocs qui peuvent de bloquer le passage jusqu’aux
 
 
 
-mpp
+
 
 #include <unistd.h>
 #define NOMBRE_BLOCS 16
