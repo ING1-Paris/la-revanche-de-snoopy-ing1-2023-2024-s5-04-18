@@ -103,7 +103,7 @@ void deplacer_droite() {
 }
 
 
-
+//affichage du terrain
 void afficher_terrain() {
     printf("||*|*|*|*|*|*|*|*|*|*|*|*|\n"); // premiere ligne de la map
     for (int i = 1; i <= 10; ++i) {
@@ -122,7 +122,7 @@ void afficher_terrain() {
             }else if (i == y_oiseau4 && j == x_oiseau4 ) {
                 printf("4");}
             else{
-                int bloc_present = 0;
+                int bloc_present = 0;//afficher les blocs
                 for (int k = 0; k < NOMBRE_BLOCS; k++) {
                     if (blocs[k][0] == j && blocs[k][1] == i) {
                         printf("B");
@@ -131,7 +131,7 @@ void afficher_terrain() {
                     }
                 }
                 if (bloc_present == 0) {
-                    printf(" ");
+                    printf(" ");//mettre des espaces la ou il n'y à pas de blocs
                 }
             }
 
@@ -140,11 +140,12 @@ void afficher_terrain() {
     }
     printf("||*|*|*|*|*|*|*|*|*|*|*|*|\n");
 }
-void pousser_bloc() {
+void pousser_bloc() {//programme pour pousser les blocs
     for (int i = 0; i < NOMBRE_BLOCS; i++) {
         if (blocs_deplaces[i] == 0) {
             int dx = 0, dy = 0;
-
+            
+            //pousser le bloc d'une case en fonction de la ou ce trouve Snoopy
             if (x_personnage + 1 == blocs[i][0] && y_personnage == blocs[i][1]) {
                 dx = 1;
             } else if (x_personnage - 1 == blocs[i][0] && y_personnage == blocs[i][1]) {
@@ -157,7 +158,8 @@ void pousser_bloc() {
 
             int new_x = blocs[i][0] + dx;
             int new_y = blocs[i][1] + dy;
-
+            
+            // déterminer si le bloc peut etre poussr
             if (new_x >= xmin && new_x <= xmax && new_y >= ymin && new_y <= ymax) {
                 int can_push = 1;
 
@@ -297,7 +299,7 @@ int main() {
                         case 'd':
                             deplacer_droite();
                             break;
-                        case 'p':
+                        case 'p'://déplacer le bloc 
                             memset(blocs_deplaces, 0, sizeof(blocs_deplaces));
                             pousser_bloc();
                             break;
