@@ -9,7 +9,7 @@ Attention il y’a aussi des blocs qui peuvent de bloquer le passage jusqu’aux
  Heureusement, Snoopy possède 3 vie, mais au bout de la troisième vie, Snoopy meurt et c’est GAME OVER …
 
 
-
+;
 
 
 #include <unistd.h>
