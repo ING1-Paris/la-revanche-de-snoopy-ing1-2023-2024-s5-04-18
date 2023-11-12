@@ -2,7 +2,7 @@
 #include <windows.h>
 #include <unistd.h>
 #define NOMBRE_BLOCS 2
-
+#include <time.h>
 #include <conio.h>
 void effacerEcran() {
     system("cls");
@@ -173,11 +173,26 @@ void pousser_bloc() {
         }
     }
 }
+int tempsTotal = 120;
+int tempsRestant ;
+clock_t debut = 0; // initialisez debut
+
+
+void miseAJourTemps() {
+
+    tempsRestant = tempsTotal - (clock() - debut) / CLOCKS_PER_SEC;
+}
+
 int main() {
-    char personnage = 'S';
-    char boule = 'C';
+    tempsRestant = tempsTotal;
+    debut = clock(); // Commencez le compte à rebours au début du programme
 
     do {
+        // Vérifiez le temps toutes les secondes
+        if ((clock() - debut) / CLOCKS_PER_SEC % 1 == 0) {
+            miseAJourTemps(); // Mettez à jour le temps toutes les secondes
+        }
+
         effacerEcran();
         // Afficher le terrain, le personnage et la boule
         afficher_terrain();
@@ -215,12 +230,12 @@ int main() {
                     break;
             }
         }
-
+        printf("Temps restant : %d secondes\n", tempsRestant);
         // Pause pour ralentir le mouvement
         usleep(100000); // Attendre 100 000 microsecondes (0,1 seconde)
-    } while (x_personnage != x_boule || y_personnage != y_boule);
-    printf("GAME OVER");
+    } while (x_personnage != x_boule || y_personnage != y_boule && tempsRestant > 0);
 
+    printf("GAME OVER");
+    sleep(2000);
     return 0;
 }
-
