@@ -5,7 +5,7 @@ Les règles sont simples, aide snoopy à récupérer les 4 oiseaux dans la map o
 -	S pour aller vers le bas
 -	D pour aller vers la droite
 Ton but est donc de  récupérer les oiseaux dispersés dans la map, cependant la tâches n’est pas si facile, il y’a un compte a rebours de 120 secondes qui te forcent a devoir te dépêcher ! Il y’ a aussi une boule qui se déplacent dans la map et qui tue snoopy si elle le touche.
-Attention il y’a aussi des blocs qui peuvent de bloquer le passage jusqu’aux oiseaux, mais grâce a la force de Snoopy tu peux déplacer chaque bloc UNE seule fois.
+Attention il y’a aussi des blocs qui peuvent de bloquer le passage jusqu’aux oiseaux, mais grâce a la force de Snoopy tu peux déplacer chaque bloc UNE seule fois grâce à la touche P.
  Heureusement, Snoopy possède 3 vie, mais au bout de la troisième vie, Snoopy meurt et c’est GAME OVER …
 
 
