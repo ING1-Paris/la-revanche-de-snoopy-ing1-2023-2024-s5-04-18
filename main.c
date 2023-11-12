@@ -84,6 +84,22 @@ void deplacementboule(){
 }
 
 int main() {
+
+    system("cls");
+    printf("                                                                                            ****    ****      \n");
+    printf("                                                                                             *  *  *  *       \n");
+    printf("                                          *******  ********  ****  ********  ******* *******  *  **  *        \n");
+    printf("                                          *  *     *  *   *  *  *  * *  * *  *     * *     *    ****          \n");
+    printf("                                          *  *     *  * *  * *  *  * *  * *  *  **** *  ****    *  *          \n");
+    printf("                                          *******  *  *  *  **  *  * *  * *  *  *    *  *       *  *          \n");
+    printf("                                             *  *  ****   *******  ********  *  *    *  *       ****          \n");
+    printf("                                             *  *                            ****    ****                     \n");
+    printf("                                          *******                                                              \n");
+sleep(5);
+
+
+
+    
     tempsRestant = tempsTotal;
     debut = clock();
 
