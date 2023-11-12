@@ -34,6 +34,9 @@ int y_oiseau3 = 10;
 int x_oiseau4 = 20;
 int y_oiseau4 = 10;
 
+int oiseau_caught=0;
+
+
 int tempsTotal = 120;
 int tempsRestant;
 clock_t debut = 0;
@@ -55,7 +58,11 @@ void afficher_terrain() {
                 printf("1");
             } else if (i == y_oiseau2 && j == x_oiseau2) {
                 printf("2");
-            } else {
+            } else if ( i == y_oiseau3 && j == x_oiseau3) {
+                printf("3");
+            }else if (i == y_oiseau4 && j == x_oiseau4 ) {
+                printf("4");
+            }else {
                 printf(" ");
             }
         }
@@ -63,51 +70,78 @@ void afficher_terrain() {
     }
     printf("||*|*|*|*|*|*|*|*|*|*|*|*|\n");
 }
+void deplacementboule(){
+    x_boule += dx_boule;
+    y_boule += dy_boule;
+
+    // Gestion des rebonds de la boule sur les bords de la carte
+    if (x_boule >= xmax || x_boule <= 1) {
+        dx_boule = -dx_boule;
+    }
+    if (y_boule >= ymax || y_boule <= 1) {
+        dy_boule = -dy_boule;
+    }
+}
 
 int main() {
     tempsRestant = tempsTotal;
     debut = clock();
 
     do {
-        if ((clock() - debut) / CLOCKS_PER_SEC % 1 == 0) {
-            miseAJourTemps();
-        }
-
+        
         effacerEcran();
         afficher_terrain();
-
-        x_boule += dx_boule;
-        y_boule += dy_boule;
-
-        if (x_boule >= xmax || x_boule <= xmin) {
-            dx_boule = -dx_boule;
+        if(x_personnage==x_oiseau1 && y_personnage==y_oiseau1){
+            y_oiseau1--;
+            oiseau_caught++;
+            printf("vous avez attrape %d oiseau\n",oiseau_caught);
         }
-        if (y_boule >= ymax || y_boule <= ymin) {
-            dy_boule = -dy_boule;
+        if(x_personnage==x_oiseau2 && y_personnage==y_oiseau2){
+            y_oiseau2--;
+            oiseau_caught++;
+            printf("vous avez attrape %d oiseau\n",oiseau_caught);
         }
+        if(x_personnage==x_oiseau3 && y_personnage==y_oiseau3){
+            y_oiseau3++;
+            oiseau_caught++;
+            printf("vous avez attrape %d oiseau\n",oiseau_caught);
+        }
+        if(x_personnage==x_oiseau4 && y_personnage==y_oiseau4){
+            y_oiseau4++;
+            oiseau_caught++;
+            printf("vous avez attrape %d oiseau\n",oiseau_caught);
+        }
+        if(oiseau_caught==4){
+            printf("vous avez gagne\n");
+        }else {
+            if ((clock() - debut) / CLOCKS_PER_SEC % 1 == 0) {
+                miseAJourTemps();
+            }
 
-        if (_kbhit()) {
-            char touche = _getch();
-            switch (touche) {
-                case 'z':
-                    if (y_personnage > ymin) y_personnage--;
-                    break;
-                case 's':
-                    if (y_personnage < ymax) y_personnage++;
-                    break;
-                case 'q':
-                    if (x_personnage > xmin) x_personnage--;
-                    break;
-                case 'd':
-                    if (x_personnage < xmax) x_personnage++;
-                    break;
+            deplacementboule();
+            if (_kbhit()) {
+                char touche = _getch();
+                switch (touche) {
+                    case 'z':
+                        if (y_personnage > ymin) y_personnage--;
+                        break;
+                    case 's':
+                        if (y_personnage < ymax) y_personnage++;
+                        break;
+                    case 'q':
+                        if (x_personnage > xmin) x_personnage--;
+                        break;
+                    case 'd':
+                        if (x_personnage < xmax) x_personnage++;
+                        break;
+                }
             }
         }
         printf("Temps restant : %d secondes\n", tempsRestant);
         usleep(100000);
-    } while (x_personnage != x_boule || y_personnage != y_boule && tempsRestant > 0);
+    } while (x_personnage != x_boule || y_personnage != y_boule && tempsRestant > 0  );
 
     printf("GAME OVER");
-    sleep(5);
-    return 0;
+    sleep(2);
+
 }
