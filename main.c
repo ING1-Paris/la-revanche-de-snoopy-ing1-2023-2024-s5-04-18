@@ -43,6 +43,7 @@ int y_oiseau3=10;
 int x_oiseau4 =20;
 int y_oiseau4 =10;
 
+int nb_oiseau_caught=0;
 
 
 // Fonction pour déplacer le personnage vers le haut
