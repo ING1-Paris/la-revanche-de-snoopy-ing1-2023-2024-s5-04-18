@@ -1,15 +1,23 @@
-Bienvenue dans le jeu Snoopy !!!
-Les règles sont simples, aide snoopy à récupérer les 4 oiseaux dans la map ou il est coincé pour lui permettre de gagné , pour cela , tu peux déplacer snoopy avec les boutons z,q,s et d :
--	Z pour aller vers le haut
--	Q pour aller vers la gauche
--	S pour aller vers le bas
--	D pour aller vers la droite
-Ton but est donc de  récupérer les oiseaux dispersés dans la map, cependant la tâches n’est pas si facile, il y’a un compte a rebours de 120 secondes qui te forcent a devoir te dépêcher ! Il y’ a aussi une boule qui se déplacent dans la map et qui tue snoopy si elle le touche.
-Attention il y’a aussi des blocs qui peuvent de bloquer le passage jusqu’aux oiseaux, mais grâce a la force de Snoopy tu peux déplacer chaque bloc UNE seule fois grâce à la touche P.
- Heureusement, Snoopy possède 3 vie, mais au bout de la troisième vie, Snoopy meurt et c’est GAME OVER …
+
+//Bienvenue dans le jeu La Revanche de Snoopy !!! Les 12 meilleurs amis de Snoopy se sont faits kidnapper lors du dernier Salon de l'Agriculture et sont maintenant enfermés dans une cage. Heureusement, Snoopy est là pour les sauver. Il a réussi à s'introduire dans la première cage, mais cette dernière est plongée dans le noir complet et est gardée par une boule. Ta mission, si tu l'acceptes, est de diriger Snoopy à l'aide de ton ordinateur pour qu'il sauve ses amis.
+
+//Les règles sont simples : tu peux indiquer à Snoopy de se déplacer avec les touches suivantes :
+
+//-Z pour aller vers le haut
+//-Q pour aller vers la gauche
+//-S pour aller vers le bas
+//-D pour aller vers la droite
+
+//Ton but est donc de récupérer les oiseaux dispersés dans la map. 
+// Cependant, la tâche n'est pas si facile. Il y a un compte à rebours de 120 secondes qui te force à devoir te dépêcher ! 
+ //Si le temps est écoulé, le gardien viendra et sortira Snoopy de la cage.
+
+//Si Snoopy se fait attraper 3 fois, il sera fait prisonnier et la partie sera perdue... 
+//Si Snoopy se prend trois fois la boule, la partie sera perdue...
+
+//Attention, il y a aussi des blocs qui peuvent bloquer le passage jusqu'aux oiseaux, mais grâce à la force phénoménale de Snoopy, tu peux déplacer chaque bloc UNE seule fois grâce à la touche P
 
 
-;
 
 
 #include <unistd.h>
