@@ -324,9 +324,9 @@ int main() {
 
 printf("Bienvenue dans le jeu La Revanche de Snoopy !!!\n");
 printf("Les 12 meilleurs amis de Snoopy se sont faits kidnapper lors du dernier Salon de l'Agriculture et sont maintenant enfermes dans une cage.\n\n");
-printf("Heureusement, Snoopy est là pour les sauver.\n");
+printf("Heureusement, Snoopy est la pour les sauver.\n");
 printf("Apres un long periple Snoopy à enfin reussit a  s'introduire dans la premiere cage, mais cette derniere est plongee dans le noir complet et est gardee par une boule.\n");
-printf("Ta mission, si tu l'acceptes, est de diriger Snoopy à l'aide de ton ordinateur pour qu'il sauve ses amis.\n\n\n");
+printf("Ta mission, si tu l'acceptes, est de diriger Snoopy à l aide de ton ordinateur pour qu il sauve ses amis.\n\n\n");
 
 printf("Les regles sont simples : tu peux indiquer a Snoopy de se deplacer avec les touches suivantes :\n");
 
@@ -336,13 +336,13 @@ printf("-Q pour aller vers la gauche\n");
 printf("-D pour aller vers la droite\n\n");
 
             printf("Ton but est donc de recuperer les oiseaux disperses dans la map.\n");
- printf("Cependant, la tache n'est pas si facile. Il y a un compte à rebours de 120 secondes qui te force à devoir te depecher !\n");
+ printf("Cependant, la tache n'est pas si facile. Il y a un compte a rebours de 120 secondes qui te force à devoir te depecher !\n");
             printf("Si le temps est ecoule, le gardien viendra et sortira Snoopy de la cage.\n");
 
             printf("Si Snoopy se fait attraper 3 fois, il sera fait prisonnier et la partie sera perdue...\n");
 printf("Si Snoopy se prend trois fois la boule, la partie sera perdue...\n");
 
-            printf("Attention, il y a aussi des blocs qui peuvent bloquer le passage jusqu'aux oiseaux, mais grâce à la force phenomenale de Snoopy, tu peux deplacer chaque bloc UNE seule fois grace a la touche P\n");
+            printf("Attention, il y a aussi des blocs qui peuvent bloquer le passage jusqu aux oiseaux, mais grace à la force phenomenale de Snoopy, tu peux deplacer chaque bloc UNE seule fois grace a la touche P\n");
             printf("Bonne chance et que la force soit avec toi \n\n\n");
             printf("petit indice le premier code se trouve dans le titre du jeu sur le menu :)");
             sleep(40);
