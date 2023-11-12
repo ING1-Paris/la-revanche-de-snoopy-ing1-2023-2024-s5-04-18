@@ -28,6 +28,19 @@ int dx_boule = 1; // Déplacement de la boule en x
 int dy_boule = 1; // Déplacement de la boule en y
 
 
+int x_oiseau1 =1;
+int y_oiseau1 =1;
+
+int x_oiseau2 =20;
+int y_oiseau2=1;
+
+int x_oiseau3 =1;
+int y_oiseau3=10;
+
+int x_oiseau4 =20;
+int y_oiseau4 =10;
+
+
 
 // Fonction pour déplacer le personnage vers le haut
 void deplacer_haut() {
@@ -85,7 +98,11 @@ void afficher_terrain() {
                 printf("S");
             } else if (i == y_boule && j == x_boule) {
                 printf("O");
-            } else {
+            } else if(i == y_oiseau1 && j == x_oiseau1){
+                printf("1");
+            }else if(i == y_oiseau2 && j == x_oiseau2){
+                printf("2");}
+            else{
                 int bloc_present = 0;
                 for (int k = 0; k < NOMBRE_BLOCS; k++) {
                     if (blocs[k][0] == j && blocs[k][1] == i) {
@@ -98,6 +115,7 @@ void afficher_terrain() {
                     printf(" ");
                 }
             }
+
         }
         printf("|*|\n");
     }
@@ -162,7 +180,7 @@ int main() {
     do {
         effacerEcran();
         // Afficher le terrain, le personnage et la boule
-       afficher_terrain();
+        afficher_terrain();
 
         // Mettre à jour la position de la boule en diagonale
         x_boule += dx_boule;
@@ -193,8 +211,8 @@ int main() {
                     deplacer_droite();
                     break;
                 case 'p':
-                pousser_bloc();
-                break;
+                    pousser_bloc();
+                    break;
             }
         }
 
@@ -205,3 +223,4 @@ int main() {
 
     return 0;
 }
+
