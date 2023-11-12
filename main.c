@@ -1,3 +1,6 @@
+// https://koor.fr/C/ctime/clock.wp (forum pour le timer)//
+
+
 #include <stdio.h>
 #include <windows.h>
 #include <unistd.h>
