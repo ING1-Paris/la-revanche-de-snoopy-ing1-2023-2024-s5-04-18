@@ -9,7 +9,7 @@ void effacerEcran() {
     system("cls");//supprime tout dans la console
 }
 
-int code_secret;// code secret cache dans le nom
+int code_secret;// code secret cache dans le nom du jeu
 
 int xmin = 1; // minnimum du nombre de colonnes de la map
 int ymin = 1;// minnimum de nombre de lignes de la map
