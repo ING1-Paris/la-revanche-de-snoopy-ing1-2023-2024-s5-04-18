@@ -257,17 +257,7 @@ void afficherregle() {
 
 
 
-
-
-
-
-
-
-
-
-
-int main() {
-   menujeu();
+void choixmenujeu(){
     switch (choix_menu) {
         case 1:
             do {
@@ -349,8 +339,8 @@ int main() {
                                 pousser_bloc();
                                 break;
                             case 't':
-                            getch();
-                            break;
+                                getch();
+                                break;
                         }
                     }
                 }
@@ -364,8 +354,11 @@ int main() {
             break;
 
 
+
+
+
         case 2:
-       afficherregle();
+            afficherregle();
             if (getch()) {
                 menujeu();
                 switch (choix_menu) {
@@ -449,7 +442,7 @@ int main() {
                                             memset(blocs_deplaces, 0, sizeof(blocs_deplaces));
                                             pousser_bloc();
                                             break;
-                                        case 't': // mettre en pause 
+                                        case 't':
                                             getch();
                                             break;
                                     }
@@ -493,4 +486,17 @@ int main() {
 
     }
 
+
+}
+
+
+
+
+
+
+
+
+int main() {
+    menujeu();
+   choixmenujeu();
 }
