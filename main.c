@@ -211,7 +211,7 @@ void menujeu(){
         printf("                                                   | Veuillez choisir une action :   | \n");
         printf("                                                   | 1) Nouvelle partie              | \n");
         printf("                                                   | 2) Afficher les regles          | \n");
-        printf("                                                   | 3) quitter le jeu               | \n");
+        printf("                                                   | 3) chzrger une partie           | \n");
         printf("                                                   |                                 | \n");
         printf("                                                   |_________________________________|\n\n\n\n\n");
         printf(" __________________\n");
