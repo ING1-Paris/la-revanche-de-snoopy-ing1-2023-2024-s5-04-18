@@ -211,7 +211,7 @@ void menujeu(){
         printf("                                                   | Veuillez choisir une action :   | \n");
         printf("                                                   | 1) Nouvelle partie              | \n");
         printf("                                                   | 2) Afficher les regles          | \n");
-        printf("                                                   | 3) Charger une partie           | \n");
+        printf("                                                   | 3) quitter le jeu               | \n");
         printf("                                                   |                                 | \n");
         printf("                                                   |_________________________________|\n\n\n\n\n");
         printf(" __________________\n");
@@ -257,246 +257,129 @@ void afficherregle() {
 
 
 
-void choixmenujeu(){
-    switch (choix_menu) {
-        case 1:
-            do {
-
-                printf("rentrez le code secret pour acceder a la partie 1");
-                scanf("%d", &code_secret);
-            } while (code_secret!=123);
-
-
-            tempsRestant = tempsTotal;
-            debut = clock(); // Commencez le compte à rebours au debut du programme
-
-            do {
-
-                effacerEcran();
-                // afficher le terrain, le personnage, la boule et les oiseaux
-                afficher_terrain();
-                if (x_personnage == x_oiseau1 && y_personnage == y_oiseau1) { // si snooppy attrape un oiseau
-                    y_oiseau1--; // alors l'oiseau disparait
-                    oiseau_caught++;// nombre d'oiseau attrapé augmente
-                    printf("Bravo ! vous avez attrape %d oiseau(x)\n", oiseau_caught);
-                    sleep(2);// pause de deux secondes pour feciliter l'utilisateur
-                }
-                if (x_personnage == x_oiseau2 && y_personnage == y_oiseau2) {
-                    y_oiseau2--;//l oiseau disparait dans le mur du haut, il aurait pu disparaitre dans le mur sur le cote en remplacant par x_oiseau2++
-                    oiseau_caught++;
-                    printf("Bravo! vous avez attrape %d oiseau(x)\n", oiseau_caught);
-                    sleep(2);
-                }
-                if (x_personnage == x_oiseau3 && y_personnage == y_oiseau3) {
-                    y_oiseau3++;//l'oiseau disparait dans le mur du bas
-                    oiseau_caught++;
-                    printf("Bravo! vous avez attrape %d oiseau(x)\n", oiseau_caught);
-                    sleep(2);
-                }
-                if (x_personnage == x_oiseau4 && y_personnage == y_oiseau4) {
-                    y_oiseau4++;// l'oiseau disparait dans la ligne du bas
-                    oiseau_caught++;
-                    printf("Bravo! vous avez attrape %d oiseau(x)\n", oiseau_caught);
-                    sleep(2);
-                }
-                if (oiseau_caught == 4) {
-                    printf("Bravo! vous avez gagne\n");// si l'utilisateur attrape 4 oiseaux alors il a gagne sinon el jeu continue
-                } else {// on place le else ici pour que tout le jeu s'arrete lorsque l on gagne , lr temps la boule et le personnage
-                    if ((clock() - debut) / CLOCKS_PER_SEC % 1 == 0) {
-                        miseAJourTemps();
-                    }
-
-                    // mettre a jour la position de la boule pour qu elle avance en diagonale
-                    x_boule += dx_boule;
-                    y_boule += dy_boule;
-
-                    // fonction pour que la boule rebondisse sur les murs et donc qu elle ne sorte pas de la map
-                    if (x_boule >= xmax || x_boule <= 1) {
-                        dx_boule = -dx_boule;
-                    }
-                    if (y_boule >= ymax || y_boule <= 1) {
-                        dy_boule = -dy_boule;
-                    }
-
-                    // deplacer le personnage en fonction de la touche appuyée
-                    if (_kbhit()) {//indications de si une touche à été frappe
-                        char touche = _getch();//attendre la frappe d'un caractere au clavier puis le lire
-                        switch (touche) {
-                            case 'z':
-                                deplacer_haut();
-                                break;
-                            case 's':
-                                deplacer_bas();
-                                break;
-                            case 'q':
-                                deplacer_gauche();
-                                break;
-                            case 'd':
-                                deplacer_droite();
-                                break;
-                            case 'p'://deplacer le bloc
-                                memset(blocs_deplaces, 0, sizeof(blocs_deplaces));
-                                pousser_bloc();
-                                break;
-                            case 't':
-                                getch();
-                                break;
-                        }
-                    }
-                }
-                printf("Temps restant : %d secondes\n", tempsRestant);
-                // pause pour ralentir ou accelerer le mouvement entre chaque position de la balle
-                usleep(100000); // pause de 0,1 seconde
-            } while (x_personnage != x_boule || y_personnage != y_boule && tempsRestant > 0);
-// continuer le jeu jusqu'a ce que le personnage rencontre la balle ou que le temps soit ecoule
-            printf("GAME OVER");
-            sleep(2000);// afficher game over pendant 2 secondes
-            break;
 
 
 
+int touchepourquit;
+int touchquitconsole; // utiliser pour pouvoir retourner en arrière sans quitter la console hehe
+void case1(){
+    do {
+
+        printf("rentrez le code secret pour acceder a la partie 1");
+        scanf("%d", &code_secret);
+    } while (code_secret != 123);
 
 
-        case 2:
-            afficherregle();
-            if (getch()) {
-                menujeu();
-                switch (choix_menu) {
-                    case 1:
-                        do {
+    tempsRestant = tempsTotal;
+    debut = clock(); // Commencez le compte à rebours au debut du programme
 
-                            printf("rentrez le code secret pour acceder a la partie 1");
-                            scanf("%d", &code_secret);
-                        } while (code_secret!=123);
+    do {
 
-
-                        tempsRestant = tempsTotal;
-                        debut = clock(); // Commencez le compte à rebours au debut du programme
-
-                        do {
-
-
-                            effacerEcran();
-                            // afficher le terrain, le personnage, la boule et les oiseaux
-                            afficher_terrain();
-                            if (x_personnage == x_oiseau1 && y_personnage == y_oiseau1) { // si snooppy attrape un oiseau
-                                y_oiseau1--; // alors l'oiseau disparait
-                                oiseau_caught++;// nombre d'oiseau attrapé augmente
-                                printf("Bravo ! vous avez attrape %d oiseau(x)\n", oiseau_caught);
-                                sleep(2);// pause de deux secondes pour feciliter l'utilisateur
-                            }
-                            if (x_personnage == x_oiseau2 && y_personnage == y_oiseau2) {
-                                y_oiseau2--;//l oiseau disparait dans le mur du haut, il aurait pu disparaitre dans le mur sur le cote en remplacant par x_oiseau2++
-                                oiseau_caught++;
-                                printf("Bravo! vous avez attrape %d oiseau(x)\n", oiseau_caught);
-                                sleep(2);
-                            }
-                            if (x_personnage == x_oiseau3 && y_personnage == y_oiseau3) {
-                                y_oiseau3++;//l'oiseau disparait dans le mur du bas
-                                oiseau_caught++;
-                                printf("Bravo! vous avez attrape %d oiseau(x)\n", oiseau_caught);
-                                sleep(2);
-                            }
-                            if (x_personnage == x_oiseau4 && y_personnage == y_oiseau4) {
-                                y_oiseau4++;// l'oiseau disparait dans la ligne du bas
-                                oiseau_caught++;
-                                printf("Bravo! vous avez attrape %d oiseau(x)\n", oiseau_caught);
-                                sleep(2);
-                            }
-                            if (oiseau_caught == 4) {
-                                printf("Bravo! vous avez gagne\n");// si l'utilisateur attrape 4 oiseaux alors il a gagne sinon el jeu continue
-                            } else {// on place le else ici pour que tout le jeu s'arrete lorsque l on gagne , lr temps la boule et le personnage
-                                if ((clock() - debut) / CLOCKS_PER_SEC % 1 == 0) {
-                                    miseAJourTemps();
-                                }
-
-                                // mettre a jour la position de la boule pour qu elle avance en diagonale
-                                x_boule += dx_boule;
-                                y_boule += dy_boule;
-
-                                // fonction pour que la boule rebondisse sur les murs et donc qu elle ne sorte pas de la map
-                                if (x_boule >= xmax || x_boule <= 1) {
-                                    dx_boule = -dx_boule;
-                                }
-                                if (y_boule >= ymax || y_boule <= 1) {
-                                    dy_boule = -dy_boule;
-                                }
-
-                                // deplacer le personnage en fonction de la touche appuyée
-                                if (_kbhit()) {//indications de si une touche à été frappe
-                                    char touche = _getch();//attendre la frappe d'un caractere au clavier puis le lire
-                                    switch (touche) {
-                                        case 'z':
-                                            deplacer_haut();
-                                            break;
-                                        case 's':
-                                            deplacer_bas();
-                                            break;
-                                        case 'q':
-                                            deplacer_gauche();
-                                            break;
-                                        case 'd':
-                                            deplacer_droite();
-                                            break;
-                                        case 'p'://deplacer le bloc
-                                            memset(blocs_deplaces, 0, sizeof(blocs_deplaces));
-                                            pousser_bloc();
-                                            break;
-                                        case 't':
-                                            getch();
-                                            break;
-                                    }
-                                }
-                            }
-                            printf("Temps restant : %d secondes\n", tempsRestant);
-                            // pause pour ralentir ou accelerer le mouvement entre chaque position de la balle
-                            usleep(100000); // pause de 0,1 seconde
-                        } while (x_personnage != x_boule || y_personnage != y_boule && tempsRestant > 0);
-// continuer le jeu jusqu'a ce que le personnage rencontre la balle ou que le temps soit ecoule
-                        printf("GAME OVER");
-                        sleep(2000);// afficher game over pendant 2 secondes
-                        break;
-
-
-                    case 2:
-                        afficherregle();
-                        if (getch()) {
-                            menujeu();
-
-
-
-
-
-
-
-                        }
-                        break;
-
-                }
-
-
-
-
-
-
-
-
+        effacerEcran();
+        // afficher le terrain, le personnage, la boule et les oiseaux
+        afficher_terrain();
+        if (x_personnage == x_oiseau1 && y_personnage == y_oiseau1) { // si snooppy attrape un oiseau
+            y_oiseau1--; // alors l'oiseau disparait
+            oiseau_caught++;// nombre d'oiseau attrapé augmente
+            printf("Bravo ! vous avez attrape %d oiseau(x)\n", oiseau_caught);
+            sleep(2);// pause de deux secondes pour feciliter l'utilisateur
+        }
+        if (x_personnage == x_oiseau2 && y_personnage == y_oiseau2) {
+            y_oiseau2--;//l oiseau disparait dans le mur du haut, il aurait pu disparaitre dans le mur sur le cote en remplacant par x_oiseau2++
+            oiseau_caught++;
+            printf("Bravo! vous avez attrape %d oiseau(x)\n", oiseau_caught);
+            sleep(2);
+        }
+        if (x_personnage == x_oiseau3 && y_personnage == y_oiseau3) {
+            y_oiseau3++;//l'oiseau disparait dans le mur du bas
+            oiseau_caught++;
+            printf("Bravo! vous avez attrape %d oiseau(x)\n", oiseau_caught);
+            sleep(2);
+        }
+        if (x_personnage == x_oiseau4 && y_personnage == y_oiseau4) {
+            y_oiseau4++;// l'oiseau disparait dans la ligne du bas
+            oiseau_caught++;
+            printf("Bravo! vous avez attrape %d oiseau(x)\n", oiseau_caught);
+            sleep(2);
+        }
+        if (oiseau_caught == 4) {
+            printf("Bravo! vous avez gagne\n");// si l'utilisateur attrape 4 oiseaux alors il a gagne sinon el jeu continue
+        } else {// on place le else ici pour que tout le jeu s'arrete lorsque l on gagne , lr temps la boule et le personnage
+            if ((clock() - debut) / CLOCKS_PER_SEC % 1 == 0) {
+                miseAJourTemps();
             }
-            break;
 
-    }
+            // mettre a jour la position de la boule pour qu elle avance en diagonale
+            x_boule += dx_boule;
+            y_boule += dy_boule;
+
+            // fonction pour que la boule rebondisse sur les murs et donc qu elle ne sorte pas de la map
+            if (x_boule >= xmax || x_boule <= 1) {
+                dx_boule = -dx_boule;
+            }
+            if (y_boule >= ymax || y_boule <= 1) {
+                dy_boule = -dy_boule;
+            }
+
+            // deplacer le personnage en fonction de la touche appuyée
+            if (_kbhit()) {//indications de si une touche à été frappe
+                char touche = _getch();//attendre la frappe d'un caractere au clavier puis le lire
+                switch (touche) {
+                    case 'z':
+                        deplacer_haut();
+                        break;
+                    case 's':
+                        deplacer_bas();
+                        break;
+                    case 'q':
+                        deplacer_gauche();
+                        break;
+                    case 'd':
+                        deplacer_droite();
+                        break;
+                    case 'p'://deplacer le bloc
+                        memset(blocs_deplaces, 0, sizeof(blocs_deplaces));
+                        pousser_bloc();
+                        break;
+                    case 'l':
+                        getch();
+                        break;
+                }
+            }
+        }
+        printf("Temps restant : %d secondes\n", tempsRestant);
+        // pause pour ralentir ou accelerer le mouvement entre chaque position de la balle
+        usleep(100000); // pause de 0,1 seconde
+    } while (x_personnage != x_boule || y_personnage != y_boule && tempsRestant > 0);
+// continuer le jeu jusqu'a ce que le personnage rencontre la balle ou que le temps soit ecoule
+    printf("GAME OVER");
+    sleep(2000);// afficher game over pendant 2 secondes
+
+
 
 
 }
 
 
 
-
-
-
-
-
 int main() {
-    menujeu();
-   choixmenujeu();
+    do {
+
+        menujeu();
+        do {
+            switch (choix_menu) {
+                case 1:
+                    case1();
+                    break;
+
+
+                case 2:
+                    afficherregle();
+                    printf("appuyer sur 1 pour quitter");
+                    scanf("%d", &touchepourquit);
+                    break;
+
+            }
+        } while (touchepourquit != 1);
+    } while (touchquitconsole!=1);
 }
