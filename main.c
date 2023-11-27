@@ -449,6 +449,9 @@ int main() {
                                             memset(blocs_deplaces, 0, sizeof(blocs_deplaces));
                                             pousser_bloc();
                                             break;
+                                        case 't': // mettre en pause 
+                                            getch();
+                                            break;
                                     }
                                 }
                             }
