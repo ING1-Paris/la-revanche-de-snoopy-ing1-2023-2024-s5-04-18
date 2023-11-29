@@ -279,29 +279,37 @@ void case1(){
         // afficher le terrain, le personnage, la boule et les oiseaux
         afficher_terrain();
         if (x_personnage == x_oiseau1 && y_personnage == y_oiseau1) { // si snooppy attrape un oiseau
-            y_oiseau1--; // alors l'oiseau disparait
-            oiseau_caught++;// nombre d'oiseau attrapé augmente
-            printf("Bravo ! vous avez attrape %d oiseau(x)\n", oiseau_caught);
-            sleep(2);// pause de deux secondes pour feciliter l'utilisateur
-        }
-        if (x_personnage == x_oiseau2 && y_personnage == y_oiseau2) {
-            y_oiseau2--;//l oiseau disparait dans le mur du haut, il aurait pu disparaitre dans le mur sur le cote en remplacant par x_oiseau2++
-            oiseau_caught++;
-            printf("Bravo! vous avez attrape %d oiseau(x)\n", oiseau_caught);
-            sleep(2);
-        }
-        if (x_personnage == x_oiseau3 && y_personnage == y_oiseau3) {
-            y_oiseau3++;//l'oiseau disparait dans le mur du bas
-            oiseau_caught++;
-            printf("Bravo! vous avez attrape %d oiseau(x)\n", oiseau_caught);
-            sleep(2);
-        }
-        if (x_personnage == x_oiseau4 && y_personnage == y_oiseau4) {
-            y_oiseau4++;// l'oiseau disparait dans la ligne du bas
-            oiseau_caught++;
-            printf("Bravo! vous avez attrape %d oiseau(x)\n", oiseau_caught);
-            sleep(2);
-        }
+                y_oiseau1--; // alors l'oiseau disparait
+                oiseau_caught++;// nombre d'oiseau attrapé augmente
+                printf("Bravo ! vous avez attrape %d oiseau(x)\n", oiseau_caught);
+                tempsAvantLaPause = clock();
+                sleep(2);// pause de deux secondes pour feciliter l'utilisateur
+                debut += clock() - tempsAvantLaPause;
+            }
+            if (x_personnage == x_oiseau2 && y_personnage == y_oiseau2) {
+                y_oiseau2--;//l oiseau disparait dans le mur du haut, il aurait pu disparaitre dans le mur sur le cote en remplacant par x_oiseau2++
+                oiseau_caught++;
+                printf("Bravo! vous avez attrape %d oiseau(x)\n", oiseau_caught);
+                tempsAvantLaPause = clock();
+                sleep(2);
+                debut += clock() - tempsAvantLaPause;
+            }
+            if (x_personnage == x_oiseau3 && y_personnage == y_oiseau3) {
+                y_oiseau3++;//l'oiseau disparait dans le mur du bas
+                oiseau_caught++;
+                printf("Bravo! vous avez attrape %d oiseau(x)\n", oiseau_caught);
+                tempsAvantLaPause = clock();
+                sleep(2);
+                debut += clock() - tempsAvantLaPause;
+            }
+            if (x_personnage == x_oiseau4 && y_personnage == y_oiseau4) {
+                y_oiseau4++;// l'oiseau disparait dans la ligne du bas
+                oiseau_caught++;
+                printf("Bravo! vous avez attrape %d oiseau(x)\n", oiseau_caught);
+                tempsAvantLaPause = clock();
+                sleep(2);
+                debut += clock() - tempsAvantLaPause;
+            }
         if (oiseau_caught == 4) {
             printf("Bravo! vous avez gagne\n");// si l'utilisateur attrape 4 oiseaux alors il a gagne sinon el jeu continue
         } else {// on place le else ici pour que tout le jeu s'arrete lorsque l on gagne , lr temps la boule et le personnage
