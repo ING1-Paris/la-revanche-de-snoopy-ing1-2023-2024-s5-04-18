@@ -187,7 +187,7 @@ void pousser_bloc() {//programme pour pousser les blocs
 int tempsTotal = 120;
 int tempsRestant ;
 clock_t debut = 0; // initialisez debut
-
+clock_t tempsAvantLaPause;
 
 void miseAJourTemps() {
 
@@ -342,8 +342,11 @@ void case1(){
                         pousser_bloc();
                         break;
                     case 'l':
-                        getch();
-                        break;
+                            tempsAvantLaPause = clock();
+                            getch();
+
+                            debut += clock() - tempsAvantLaPause;
+                            break;
                 }
             }
         }
