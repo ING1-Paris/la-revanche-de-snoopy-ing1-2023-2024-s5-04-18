@@ -557,7 +557,9 @@ void case1(){
         if(x_personnage == x_boule && y_personnage == y_boule || tempsRestant < 0){
             viesnoopy = viesnoopy-1;
             printf("vous avez perdue une vie\n");
+            tempsAvantLaPause = clock();
             sleep(2);
+            debut += clock() - tempsAvantLaPause;
         }
     } while (viesnoopy!=0);
    system("cls");
