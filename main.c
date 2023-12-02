@@ -1,8 +1,4 @@
 
-
-
-
-
 #include <stdio.h>
 #include <windows.h>
 #include <unistd.h>
@@ -295,9 +291,10 @@ void menujeu(){
         printf("                                                   |                                 | \n");
         printf("                                                   | Veuillez choisir une action :   | \n");
         printf("                                                   | 1) Nouvelle partie              | \n");
-        printf("                                                   | 2) Afficher les regles          | \n");
-        printf("                                                   | 3) chzrger une partie           | \n");
-        printf("                                                   |                                 | \n");
+        printf("                                                   | 4) Afficher les regles          | \n");
+        printf("                                                   | 5) charger une partie           | \n");
+        printf("                                                   | 2) niveau 2                     | \n");
+        printf("                                                   | 3) niveau 3                     | \n");
         printf("                                                   |_________________________________|\n\n\n\n\n");
         printf(" __________________\n");
         printf("| Auteurs :        |\n| ARMAND RATHERY   |\n| LORENZO ENGLENDER|\n| ELIOT PASCHAL    |\n");
@@ -559,16 +556,33 @@ int main() {
                     break;
 
 
-                case 2:
+                case 4:
                     afficherregle();
                     printf("appuyer sur 1 pour revenir au menu");
                     scanf("%d", &touchepourquit);
                     break;
 
+                case 2:
+                    do {
+
+                        printf("rentrez le code secret pour acceder a la partie 2");
+                        scanf("%d", &code_secret);
+                    } while (code_secret != 12);
+                    //faire le case 2 ( le niveau 2)
+                    break;
+                case 3:
+                    do {
+
+                        printf("rentrez le code secret pour acceder a la partie 3");
+                        scanf("%d", &code_secret);
+                    } while (code_secret != 1);
+
+
             }
         } while (touchepourquit != 1);
     } while (touchquitconsole!=1);
 }
+
 
 
 
