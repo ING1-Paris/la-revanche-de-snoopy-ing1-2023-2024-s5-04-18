@@ -1,4 +1,3 @@
-
 #include <stdio.h>
 #include <windows.h>
 #include <unistd.h>
@@ -291,10 +290,10 @@ void menujeu(){
         printf("                                                   |                                 | \n");
         printf("                                                   | Veuillez choisir une action :   | \n");
         printf("                                                   | 1) Nouvelle partie              | \n");
-        printf("                                                   | 4) Afficher les regles          | \n");
-        printf("                                                   | 5) charger une partie           | \n");
         printf("                                                   | 2) niveau 2                     | \n");
         printf("                                                   | 3) niveau 3                     | \n");
+        printf("                                                   | 4) Afficher les regles          | \n");
+        printf("                                                   | 5)charger une partie            | \n");
         printf("                                                   |_________________________________|\n\n\n\n\n");
         printf(" __________________\n");
         printf("| Auteurs :        |\n| ARMAND RATHERY   |\n| LORENZO ENGLENDER|\n| ELIOT PASCHAL    |\n");
@@ -529,7 +528,7 @@ void case1(){
             debut += clock() - tempsAvantLaPause;
         }
         if (oiseau_caught == 4) {
-           printf("Bravo! vous avez gagne\n");// si l'utilisateur attrape 4 oiseaux alors il a gagne sinon el jeu continue
+            printf("Bravo! vous avez gagne\n");// si l'utilisateur attrape 4 oiseaux alors il a gagne sinon el jeu continue
             printf("Votre score est de %d snoopy\n",tempsRestant*100);
         } else {// on place le else ici pour que tout le jeu s'arrete lorsque l on gagne , lr temps la boule et le personnage
             if ((clock() - debut) / CLOCKS_PER_SEC % 1 == 0) {
@@ -637,11 +636,6 @@ int main() {
                     break;
 
 
-                case 4:
-                    afficherregle();
-                    printf("appuyer sur 1 pour revenir au menu");
-                    scanf("%d", &touchepourquit);
-                    break;
 
                 case 2:
                     do {
@@ -657,8 +651,16 @@ int main() {
                         printf("rentrez le code secret pour acceder a la partie 3");
                         scanf("%d", &code_secret);
                     } while (code_secret != 1);
+                    break;
+                case 4:
+                    afficherregle();
+                    printf("appuyer sur 1 pour revenir au menu");
+                    scanf("%d", &touchepourquit);
+                    break;
 
-
+                case 5:
+                    break;
+                
             }
         } while (touchepourquit != 1);
     } while (touchquitconsole!=1);
