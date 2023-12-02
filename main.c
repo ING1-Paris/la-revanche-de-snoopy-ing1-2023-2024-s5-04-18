@@ -543,6 +543,35 @@ void case1(){
 
 
 
+}
+
+
+
+int main() {
+    sauvegarder_positions_initiales();
+    do {
+
+        menujeu();
+        do {
+            switch (choix_menu) {
+                case 1:
+                    case1();
+                    break;
+
+
+                case 2:
+                    afficherregle();
+                    printf("appuyer sur 1 pour revenir au menu");
+                    scanf("%d", &touchepourquit);
+                    break;
+
+            }
+        } while (touchepourquit != 1);
+    } while (touchquitconsole!=1);
+}
+
+
+
 
 
 
