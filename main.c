@@ -1258,6 +1258,22 @@ void case1(){
                         deplacer_droite();
                         break;
                     case 'p'://deplacer le bloc
+                        if(x_personnage==7 && y_personnage == 5 ||x_personnage==8 && y_personnage == 6 || x_personnage==8 && y_personnage == 4 || x_personnage==9 && y_personnage == 5) {
+                    if (viesnoopy < 3) {
+                        printf(" vous avez declenche un bloc bonus, vous gagne une vie sauf si vous en avez deja 3");
+                        tempsAvantLaPause = clock();
+                        sleep(2);
+                        debut += clock() - tempsAvantLaPause;
+                        viesnoopy = viesnoopy + 1;
+                    } else
+                        (printf(" vous avez declenche un bloc bonus, vous gagne une vie sauf si vous en avez deja 3"));
+                    tempsAvantLaPause = clock();
+                    sleep(2);
+                    debut += clock() - tempsAvantLaPause;
+                }
+
+
+                        
                         for (int i = 0; i < NOMBRE_BLOCS; i++) {
                             if (((x_personnage + 1 == blocs[i][0] && y_personnage == blocs[i][1]) ||
                                  (x_personnage - 1 == blocs[i][0] && y_personnage == blocs[i][1]) ||
