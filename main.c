@@ -353,7 +353,7 @@ int viesnoopy=3;
 
 
 void reinitialiser_jeu() {
-    // Réinitialiser les positions et les variables du jeu
+    // reinitialiser les positions et les variables du jeu
 
 
     xmin = 1; // minnimum du nombre de colonnes de la map
@@ -406,31 +406,31 @@ void reinitialiser_jeu() {
     memset(blocs_deplaces, 0, sizeof(blocs_deplaces));
     charger_positions_initiales();
 }
-int affichercoeur(int x ) {
-    if(x==3) {
+int affichercoeur( ) {
+    if(viesnoopy==3) {
         printf("   **   **    **   **    **   **\n  ");
         printf("**** ****  **** ****  **** ****\n  ");
         printf(" ******     ******     ******\n ");
         printf("   ****       ****       ****\n  ");
         printf("   **         **         **\n    ");
 
-    }else if(x==2) {
+    }else if(viesnoopy==2) {
         printf("     **   **    **   **\n  ");
         printf("  **** ****  **** ****\n  ");
         printf("   ******     ******\n  ");
         printf("    ****       ****\n  ");
         printf("     **         **\n  ");
 
-    }else if(x==1) {
+    }else if(viesnoopy==1) {
         printf("     **   **\n ");
         printf("   **** ****\n  ");
         printf("   ******\n  ");
         printf("    ****\n  ");
         printf("     **\n  ");
 
-    }else if (x==0){
-    printf(" ");
-}
+    }else if (viesnoopy==0){
+        printf(" ");
+    }
 }
 
 
@@ -450,7 +450,7 @@ void case1(){
 
 
     tempsRestant = tempsTotal;
-    debut = clock(); // Commencez le compte à rebours au debut du programme
+    debut = clock(); // commencez le compte à rebours au debut du programme
 
 
     do {
@@ -562,18 +562,18 @@ void case1(){
             debut += clock() - tempsAvantLaPause;
         }
     } while (viesnoopy!=0);
-   system("cls");
-    printf("  ***   *****  *   *  *****\n");
+    system("cls");
+    printf("  ***   *****  *   *  *****  \n");
     printf(" *      *   *  ** **  *    \n");
-    printf(" *  **  *****  * * *  **** \n");
+    printf(" *  **  *****  * * *  ****   \n");
     printf(" *   *  *   *  *   *  *    \n");
-    printf("  ***   *   *  *   *  *****\n");
-
-    printf(" ***  *         *  *****  ****\n");
-    printf("*   *  *       *   *      *   *\n");
-    printf("*   *   *     *    ****   ****\n");
-    printf("*   *    *   *     *      *  *\n");
-    printf(" ***       *       *****  *   *\n");
+    printf("  ***   *   *  *   *  ***** \n");
+    printf(" \n");
+    printf(" ****  *         *  *****  **** \n");
+    printf("*    *  *       *   *      *   *\n");
+    printf("*    *   *     *    ****   **** \n");
+    printf("*    *    *   *     *      *  *  \n");
+    printf(" ****       *       *****  *   *\n");
 
     printf("appuyer sur 1 pour revenir au menu");
     scanf("%d", &touchepourquit);
