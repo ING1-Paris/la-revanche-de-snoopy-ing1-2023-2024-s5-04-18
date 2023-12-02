@@ -513,6 +513,7 @@ void case1(){
         }
         if (oiseau_caught == 4) {
             printf("Bravo! vous avez gagne\n");// si l'utilisateur attrape 4 oiseaux alors il a gagne sinon el jeu continue
+             printf("Votre score est de %d snoopy\n",tempsRestant*100);
         } else {// on place le else ici pour que tout le jeu s'arrete lorsque l on gagne , lr temps la boule et le personnage
             if ((clock() - debut) / CLOCKS_PER_SEC % 1 == 0) {
                 miseAJourTemps();
