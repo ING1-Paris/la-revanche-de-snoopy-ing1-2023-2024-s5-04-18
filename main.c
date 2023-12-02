@@ -433,6 +433,44 @@ int affichercoeur( ) {
     }
 }
 
+int afficheroiseau(){
+    if(oiseau_caught==1) {
+        printf("\n");
+        printf(" *     * \n");
+        printf("  *   * \n");
+        printf("   * *   \n");
+        printf("    *\n");
+    }else if(oiseau_caught==2){
+
+        printf("\n");
+        printf(" *     *     *     * \n");
+        printf("  *   *       *   *  \n");
+        printf("   * *         * *   \n");
+        printf("    *           *    \n");
+    }else if (oiseau_caught==3){
+        printf("                           \n");
+        printf(" *     *     *     *    *     * \n");
+        printf("  *   *       *   *      *   *\n");
+        printf("   * *         * *        * *\n");
+        printf("    *           *          *\n");
+
+
+    }else if ( oiseau_caught==4){
+        printf(" \n");
+        printf(" *     *     *     *    *     *    *     *\n");
+        printf("  *   *       *   *      *   *      *   *\n");
+        printf("   * *         * *        * *        * *\n");
+        printf("    *           *          *          * \n");
+    }else if(oiseau_caught==0){
+        printf(" ");
+    }
+}
+
+
+
+
+
+
 
 void case1(){
     for (int i = 0; i < NOMBRE_BLOCS; i++) {
@@ -552,7 +590,8 @@ void case1(){
             }
         }
         printf("Temps restant : %d secondes\n", tempsRestant);
-        affichercoeur( viesnoopy);
+        affichercoeur( );
+        afficheroiseau();
         // pause pour ralentir ou accelerer le mouvement entre chaque position de la balle
         usleep(100000); // pause de 0,1 seconde
         if(x_personnage == x_boule && y_personnage == y_boule || tempsRestant < 0){
