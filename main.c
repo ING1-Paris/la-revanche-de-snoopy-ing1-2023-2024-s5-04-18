@@ -406,6 +406,32 @@ void reinitialiser_jeu() {
     memset(blocs_deplaces, 0, sizeof(blocs_deplaces));
     charger_positions_initiales();
 }
+int affichercoeur(int x ) {
+    if(x==3) {
+        printf("   **   **    **   **    **   **\n  ");
+        printf("**** ****  **** ****  **** ****\n  ");
+        printf(" ******     ******     ******\n ");
+        printf("   ****       ****       ****\n  ");
+        printf("   **         **         **\n    ");
+
+    }else if(x==2) {
+        printf("     **   **    **   **\n  ");
+        printf("  **** ****  **** ****\n  ");
+        printf("   ******     ******\n  ");
+        printf("    ****       ****\n  ");
+        printf("     **         **\n  ");
+
+    }else if(x==1) {
+        printf("     **   **\n ");
+        printf("   **** ****\n  ");
+        printf("   ******\n  ");
+        printf("    ****\n  ");
+        printf("     **\n  ");
+
+    }else if (x==0){
+    printf(" ");
+}
+}
 
 
 void case1(){
@@ -525,6 +551,7 @@ void case1(){
             }
         }
         printf("Temps restant : %d secondes\n", tempsRestant);
+        affichercoeur( viesnoopy);
         // pause pour ralentir ou accelerer le mouvement entre chaque position de la balle
         usleep(100000); // pause de 0,1 seconde
         if(x_personnage == x_boule && y_personnage == y_boule || tempsRestant < 0){
@@ -533,7 +560,19 @@ void case1(){
             sleep(2);
         }
     } while (viesnoopy!=0);
-    printf("GAME OVER!\n");
+   system("cls");
+    printf("  ***   *****  *   *  *****\n");
+    printf(" *      *   *  ** **  *    \n");
+    printf(" *  **  *****  * * *  **** \n");
+    printf(" *   *  *   *  *   *  *    \n");
+    printf("  ***   *   *  *   *  *****\n");
+
+    printf(" ***  *         *  *****  ****\n");
+    printf("*   *  *       *   *      *   *\n");
+    printf("*   *   *     *    ****   ****\n");
+    printf("*   *    *   *     *      *  *\n");
+    printf(" ***       *       *****  *   *\n");
+
     printf("appuyer sur 1 pour revenir au menu");
     scanf("%d", &touchepourquit);
     reinitialiser_jeu();
