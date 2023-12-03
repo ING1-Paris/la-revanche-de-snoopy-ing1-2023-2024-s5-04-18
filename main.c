@@ -22,6 +22,7 @@ if (x_personnage==9 && y_personnage == 2 ||x_personnage==9 && y_personnage == 4 
                                 printf(" *  **  *****  * * *  **** \n");
                                 printf(" *   *  *   *  *   *  *    \n");
                                 printf("  ***   *   *  *   *  *****\n");
+                              printf("\n");
 
                                 printf(" ***  *         *  *****  ****\n");
                                 printf("*   *  *       *   *      *   *\n");
