@@ -6,6 +6,54 @@
 #include <time.h>
 #include <conio.h>
 
+
+// bloc piege a mettre dans le case p, tu choisis les coordonnes du bloc cassable
+if (x_personnage==9 && y_personnage == 2 ||x_personnage==9 && y_personnage == 4 || x_personnage==8 && y_personnage == 3 || x_personnage==10 && y_personnage == 3) {
+                            printf("vous etes tombe sur un bloc piege, vous perdez une vie");
+                            tempsAvantLaPause = clock();
+                            sleep(2);
+                            debut += clock() - tempsAvantLaPause;
+                            if (viesnoopy>0){
+                                viesnoopy= viesnoopy-1;
+                            }else if (viesnoopy==0){
+                                system("cls");
+                                printf("  ***   *****  *   *  *****\n");
+                                printf(" *      *   *  ** **  *    \n");
+                                printf(" *  **  *****  * * *  **** \n");
+                                printf(" *   *  *   *  *   *  *    \n");
+                                printf("  ***   *   *  *   *  *****\n");
+
+                                printf(" ***  *         *  *****  ****\n");
+                                printf("*   *  *       *   *      *   *\n");
+                                printf("*   *   *     *    ****   ****\n");
+                                printf("*   *    *   *     *      *  *\n");
+                                printf(" ***       *       *****  *   *\n");;
+                                printf("appuyer sur 1 pour revenir au menu");
+                                scanf("%d", &touchepourquit);
+                                reinitialiser_jeu();
+                            }
+                            case1();
+
+                        }
+
+// bloc bonus a mettre dans case p, tu choisis les coordonnes du bloc
+if(x_personnage==7 && y_personnage == 5 ||x_personnage==8 && y_personnage == 6 || x_personnage==8 && y_personnage == 4 || x_personnage==9 && y_personnage == 5) {
+                    if (viesnoopy < 3) {
+                        printf(" vous avez declenché un bloc bonus, vous gagne une vie sauf si vous en avez deja 3");
+                        tempsAvantLaPause = clock();
+                        sleep(2);
+                        debut += clock() - tempsAvantLaPause;
+                        viesnoopy = viesnoopy + 1;
+                    } else
+                        (printf(" vous avez declenche un bloc bonus, vous gagne une vie sauf si vous en avez deja 3"));
+                    tempsAvantLaPause = clock();
+                    sleep(2);
+                    debut += clock() - tempsAvantLaPause;
+                }
+
+
+
+
 void effacerEcran() {
     system("cls");//supprime tout dans la console
 }
